@@ -4,7 +4,7 @@ pipeline {
     environment {
         // --- Configuration Variables ---
         REGISTRY = "ghcr.io"
-        GITHUB_USER = "syafasyakira" 
+        GITHUB_USER = "khaelano" 
         REPO_NAME = "devsecops-presensi"         
         IMAGE_NAME = "${REGISTRY}/${GITHUB_USER}/${REPO_NAME}"
         
