@@ -32,6 +32,15 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# --- CRITICAL FIX: Catch Jenkins Build Arguments ---
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+
+# Expose them to the Next.js build process so they compile into the static JS
+ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
+ENV NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+# ---------------------------------------------------
+
 # Build the Next.js application
 RUN npm run build
 
