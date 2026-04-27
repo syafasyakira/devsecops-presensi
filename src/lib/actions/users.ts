@@ -69,7 +69,7 @@ export async function getAllUsersAction(): Promise<User[]> {
       },
     });
 
-    return users.map((user) => ({
+    return users.map((user: { id: string; namaLengkap: string; username: string; email: string | null; role: Role; createdAt: Date }) => ({
       id: user.id,
       namaLengkap: user.namaLengkap,
       username: user.username,
