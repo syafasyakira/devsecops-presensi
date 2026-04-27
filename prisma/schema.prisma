@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Properti 'url' dikosongkan karena dipindah ke prisma.config.ts
+}
+
+model User {
+  id           String          @id @default(cuid())
+  namaLengkap  String
+  username     String          @unique
+  email        String?         @unique
+  password     String          
+  role         Role            @default(user)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  absensi      AbsensiRecord[]
+
+  @@map("users")
+}
+
+model AbsensiRecord {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tanggal   String        
+  hari      String
+  jamMasuk  String?
+  status    AbsensiStatus @default(Alpha)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@unique([userId, tanggal]) 
+  @@map("absensi_records")
+}
+
+enum Role {
+  admin
+  user
+}
+
+enum AbsensiStatus {
+  Hadir
+  Izin
+  Alpha
+}

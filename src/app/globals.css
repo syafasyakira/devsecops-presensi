@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0A0F2E;
+  --navy-mid: #0D1B4B;
+  --navy-light: #1a2a6c;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --blue-glow: rgba(37, 99, 235, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.4);
+  border-radius: 3px;
+}
+
+/* Navy gradient background */
+.bg-navy-gradient {
+  background: radial-gradient(ellipse at 30% 20%, #1a2a6c 0%, #0D1B4B 40%, #0A0F2E 100%);
+}
+
+.bg-navy-gradient-2 {
+  background: radial-gradient(ellipse at 70% 80%, #1a2a6c 0%, #0A1535 50%, #050A1E 100%);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* White card (dashboard) */
+.white-card {
+  background: #ffffff;
+  color: #0A0F2E;
+  border-radius: 16px;
+}
+
+/* Input focus ring */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+}
+
+/* Status badge animations */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
+.animate-slide-up { animation: slideUp 0.4s ease-out; }
+.animate-slide-down { animation: slideDown 0.3s ease-out; }
+
+/* Toast notification */
+.toast-enter {
+  animation: slideDown 0.3s ease-out;
+}
