@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { LoginRequest, Role } from "@/types";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { z } from "zod";
 
 // ─── Validation Schemas ────────────────────────────────────────────────────────
