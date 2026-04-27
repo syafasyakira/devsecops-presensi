@@ -10,7 +10,7 @@ pipeline {
         
         IMAGE_TAG = "${env.BUILD_ID}" 
         
-        SSH_TARGET = "jenkins@10.34.100.181"
+        SSH_TARGET = "deploy@10.34.100.181"
         
         // CORRECTION 1: These must be plain strings representing the Jenkins IDs
         SSH_CREDS_ID = "deploy-ssh-key"
