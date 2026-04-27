@@ -98,9 +98,10 @@ pipeline {
 
     post {
         always {
-            sh "docker logout ${REGISTRY} || true"
-            sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG} || true"
-            sh "docker rmi ${IMAGE_NAME}:latest || true"
+            // Use env. prefix to ensure Groovy finds the variable
+            sh "docker logout ${env.REGISTRY} || true"
+            sh "docker rmi ${env.IMAGE_NAME}:${env.IMAGE_TAG} || true"
+            sh "docker rmi ${env.IMAGE_NAME}:latest || true"
         }
     }
 }
