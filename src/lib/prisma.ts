@@ -1,7 +1,9 @@
 // src/lib/prisma.ts
 import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
-import { Pool } from 'pg'
+import pg from 'pg' // Gunakan default import untuk pg
+
+const { Pool } = pg
 
 // 1. Inisialisasi variabel global untuk mencegah duplikasi koneksi saat development (Next.js HMR)
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
