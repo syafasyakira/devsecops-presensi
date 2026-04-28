@@ -29,7 +29,6 @@ export function saveAuth(token: string, user: User, role: Role) {
   const cookieOptions: Cookies.CookieAttributes = {
     expires: 1, 
     sameSite: "Strict", 
-    // FIX: Hanya set 'secure: true' jika kita di production DAN menggunakan HTTPS
     secure: isProduction && isSecureConnection, 
   };
 
