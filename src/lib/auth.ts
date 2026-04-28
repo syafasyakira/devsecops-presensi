@@ -10,10 +10,12 @@ import Cookies from "js-cookie";
 export function saveAuth(token: string, user: User, role: Role) {
   if (typeof window === "undefined") return;
 
+  // Cek apakah kita di production
   const isProduction = process.env.NODE_ENV === "production";
+  
+  // Cek apakah koneksi saat ini adalah HTTPS
+  const isSecureConnection = window.location.protocol === "https:";
 
-  // Data non-sensitif di localStorage untuk keperluan UI
-  // ⚠️  JANGAN simpan token/password di localStorage
   localStorage.setItem(
     "user",
     JSON.stringify({
@@ -21,16 +23,14 @@ export function saveAuth(token: string, user: User, role: Role) {
       namaLengkap: user.namaLengkap,
       username: user.username,
       role: user.role,
-      // Tidak menyimpan field sensitif lainnya
     })
   );
 
-  // Cookie dengan opsi keamanan
   const cookieOptions: Cookies.CookieAttributes = {
-    expires: 1, // 1 hari
-    sameSite: "Strict", // Mencegah CSRF
-    secure: isProduction, // HTTPS only di produksi
-    // httpOnly tidak bisa diset via js-cookie — gunakan server-side cookie
+    expires: 1, 
+    sameSite: "Strict", 
+    // FIX: Hanya set 'secure: true' jika kita di production DAN menggunakan HTTPS
+    secure: isProduction && isSecureConnection, 
   };
 
   Cookies.set("token", token, cookieOptions);
