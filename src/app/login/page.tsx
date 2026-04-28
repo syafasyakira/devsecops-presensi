@@ -121,7 +121,7 @@ export default function LoginPage() {
         <div className="w-full max-w-sm">
           <div className="mb-10">
             <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tight leading-none">
-              Login Account
+              Login Account Ppp.
             </h2>
             <p className="text-gray-400 text-[10px] font-bold mt-2 uppercase tracking-[0.2em]">
               Masuk untuk melanjutkan
