@@ -9,7 +9,7 @@ import { loginAction } from "@/lib/actions/auth";
 // ⚠️  KEAMANAN: Rate limiting sederhana di sisi client
 // Mencegah brute force yang terang-terangan. Rate limiting SESUNGGUHNYA
 // harus dilakukan di server/middleware.
-const MAX_ATTEMPTS = 5;
+const MAX_ATTEMPTS = 6;
 const LOCKOUT_DURATION_MS = 60 * 1000; // 1 menit
 
 export default function LoginPage() {
